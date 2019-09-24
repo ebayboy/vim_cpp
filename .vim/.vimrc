@@ -27,7 +27,14 @@ inoremap [ []<ESC>i
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 inoremap { {<CR>}<ESC>kA<CR>
+
+
 map <F5> <ESC> :w <CR> :!g++ -g % -o %< && ./%< <CR>
+
+nnoremap <silent> <F8> :TlistToggle<CR>
+
+set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
+map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> "
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
