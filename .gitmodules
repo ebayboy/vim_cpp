@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/vim-sensible"]
 	path = .vim/bundle/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
+[submodule ".vim/plugin"]
+	path = .vim/plugin
+	url = https://github.com/Rip-Rip/clang_complete.git
