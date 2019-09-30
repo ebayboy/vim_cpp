@@ -33,7 +33,8 @@ inoremap { {<CR>}<ESC>kA<CR>
 map <F4> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 
 map <F5> <ESC> :w <CR> :!g++ -g % -o %< && ./%< <CR>
-map <F6> <ESC> :w <CR> :!g++ -g % -o %< && valgrind ./%< <CR>
+map <F6> <ESC> :w <CR> :!./%< <CR>
+map <F7> <ESC> :w <CR> :!g++ -g % -o %< && valgrind ./%< <CR>
 
 nnoremap <silent> <F8> :TlistToggle<CR>
 
