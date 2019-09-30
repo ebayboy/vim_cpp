@@ -30,9 +30,10 @@ inoremap ' ''<ESC>i
 inoremap { {<CR>}<ESC>kA<CR>
 
 
+map <F4> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
+
 map <F5> <ESC> :w <CR> :!g++ -g % -o %< && ./%< <CR>
 map <F6> <ESC> :w <CR> :!g++ -g % -o %< && valgrind ./%< <CR>
-map <F4> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 
 nnoremap <silent> <F8> :TlistToggle<CR>
 
@@ -50,4 +51,67 @@ let g:clang_close_preview=1
 let g:clang_use_library=1
 let g:clang_user_options='-stdlib=libstdc++ -std=c++11 ./'
 let g:clang_library_path="/usr/lib/llvm-8/lib"
+
+function AddFileInformation_sh()
+	let infor = "#!/bin/bash\n"
+				\."\n"
+				\."# ***************************************************************************\n"
+				\."# * \n"
+				\."# * @file:".expand("%")." \n"
+				\."# * @author:ebayboy@163.com \n"
+				\."# * @date:".strftime("%Y-%m-%d %H:%M")." \n"
+				\."# * @version 1.0  \n"
+				\."# * @description: Shell script \n"
+				\."# * @Copyright (c)  all right reserved \n"
+				\."#* \n"
+				\."#**************************************************************************/ \n"
+				\."\n"
+				\."\n"
+				\."\n"
+				\."\n"
+				\."exit 0"
+	silent  put! =infor
+endfunction
+autocmd BufNewFile *.sh call AddFileInformation_sh()
+
+
+function AddFileInformation_CPP()
+	let infor = "/****************************************************************************\n"
+				\."@file:".expand("%")." \n"
+				\."@author:ebayboy@163.com \n"
+				\."@date:".strftime("%Y-%m-%d %H:%M")." \n"
+				\."@version 1.0  \n"
+				\."@description: cpp file \n"
+				\."@Copyright (c)  all right reserved \n"
+				\."**************************************************************************/\n\n"
+				\."#include <iostream>\n\n"   
+				\."using namespace std;\n\n"
+				\."int main(int argc, char **argv)\n"
+				\."{\n\n"
+				\."	cout<<\"hello world!\"<<endl;\n\n"
+				\."	return 0;\n"
+				\."}"
+	silent  put! =infor
+endfunction
+autocmd BufNewFile *.cpp call AddFileInformation_CPP()
+
+function AddFileInformation_C()
+	let infor = "/****************************************************************************\n"
+				\."@file:".expand("%")." \n"
+				\."@author:ebayboy@163.com \n"
+				\."@date:".strftime("%Y-%m-%d %H:%M")." \n"
+				\."@version 1.0  \n"
+				\."@description: cpp file \n"
+				\."@Copyright (c)  all right reserved \n"
+				\."**************************************************************************/\n\n"
+				\."#include <stdio.h>\n\n"   
+				\."#include <unistd.h>\n\n"   
+				\."int main(int argc, char **argv)\n"
+				\."{\n\n"
+				\."	printf(\"hello world!\\n\");\n\n"
+				\."	return 0;\n"
+				\."}"
+	silent  put! =infor
+endfunction
+autocmd BufNewFile *.c call AddFileInformation_C()
 
