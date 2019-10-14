@@ -31,18 +31,23 @@ inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 inoremap { {<CR>}<ESC>kA<CR>
 
+"format 
 map <F2> :call FormatCode()<CR>
+"git push
 map <F3> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
-map <F5> <ESC> :w <CR> :!g++ -Wall -g % -o %< && ./%< <CR>
+"g++ && run
+map <F4> <ESC> :w <CR> :!g++ -Wall -g % -o %< && ./%< <CR>
+"run
+map <F5> <ESC> :w <CR> :!./%< <CR>
 
 "-- QuickFix setting --
-"set temp makefile and make clean
+"set temp makefile && make clean
 map <F6> <ESC> :w <CR> :set makeprg=g++\ -Wall\ %\ -o%<\ <CR><CR> :make clean<CR><CR>
-"make with QuickFix && open quikfix
+"make
 map <F7> :make<CR><CR><CR> :copen<CR><CR>
-"move to next error
+"next error
 map <F8> :cp<CR>
-"move to prev error
+"prev error 
 map <F9> :cn<CR>
 imap <F6> <ESC>:make clean<CR><CR><CR>
 imap <F7> <ESC>:make<CR><CR><CR> :copen<CR><CR>
