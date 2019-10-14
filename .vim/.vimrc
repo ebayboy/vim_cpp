@@ -29,12 +29,10 @@ inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 inoremap { {<CR>}<ESC>kA<CR>
 
-
 map <F4> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
-
-map <F5> <ESC> :w <CR> :!g++ -g % -o %< && ./%< <CR>
+map <F5> <ESC> :w <CR> :!g++ -Wall -g % -lpthread -o %< && ./%< <CR>
 map <F6> <ESC> :w <CR> :!./%< <CR>
-map <F7> <ESC> :w <CR> :!g++ -g % -o %< && valgrind ./%< <CR>
+map <F7> <ESC> :w <CR> :!g++ -Wall -g % -lpthread -o %< && valgrind ./%< <CR>
 
 nnoremap <silent> <F8> :TlistToggle<CR>
 
@@ -87,6 +85,7 @@ function AddFileInformation_CPP()
 				\."**************************************************************************/\n\n"
 				\."#include <iostream>\n\n"   
 				\."using namespace std;\n\n"
+				\."#define DEBUG \n\n"
 				\."int main(int argc, char **argv)\n"
 				\."{\n\n"
 				\."	cout<<\"hello world!\"<<endl;\n\n"
