@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'tpope/vim-sensible'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/OmniCppComplete.git'
 
 call vundle#end()
 
@@ -55,23 +56,22 @@ imap <F8> <ESC>:cp<CR>
 imap <F9> <ESC>:cn<CR>
 
 nnoremap <silent> <F11> :TlistToggle<CR>
+
 set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
 map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> "
+
+"cpp tags file generate by https://www.vim.org/scripts/script.php?script_id=2358
+set tags+=~/cpp
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 
-let g:clang_complete_copen=1
-let g:clang_snippets=1
-let g:clang_close_preview=1
-let g:clang_use_library=1
-let g:clang_user_options='-stdlib=libstdc++ -std=c++11 ./'
-let g:clang_library_path="/usr/lib/llvm-8/lib"
 "F2 format code auto, please install astyle first."
 let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
 let g:formatters_cpp = ['allman']
 let g:formatters_c = ['allman']
+let Tlist_Auto_Open=1 
 
 function AddFileInformation_sh()
 	let infor = "#!/bin/bash\n"
