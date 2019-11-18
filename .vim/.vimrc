@@ -32,8 +32,6 @@ inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 inoremap { {<CR>}<ESC>kA<CR>
 
-"format 
-map <F2> :call FormatCode()<CR>
 "git push
 map <F3> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 "g++ && run
@@ -139,27 +137,5 @@ function AddFileInformation_C()
 	silent  put! =infor
 endfunction
 autocmd BufNewFile *.c call AddFileInformation_C()
-
-func! FormatCode()
-    exec "w"
-    if &filetype == 'c' || &filetype == 'h'
-        exec "!astyle --style=allman --suffix=none %"
-    elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp'
-        exec "!astyle --style=allman --suffix=none %"
-    elseif &filetype == 'perl'
-        exec "!astyle --style=gnu --suffix=none %"
-    elseif &filetype == 'py'|| &filetype == 'python'
-        exec "!autopep8 --in-place --aggressive %"
-    elseif &filetype == 'java'
-        exec "!astyle --style=java --suffix=none %"
-    elseif &filetype == 'jsp'
-        exec "!astyle --style=gnu --suffix=none %"
-    elseif &filetype == 'xml'
-        exec "!astyle --style=gnu --suffix=none %"
-    else
-        exec "normal gg=G"
-        return
-    endif
-endfunc
 
 
