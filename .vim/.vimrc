@@ -61,7 +61,7 @@ set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则�
 map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> "
 
 "cpp tags file generate by https://www.vim.org/scripts/script.php?script_id=2358
-set tags+=~/cpp
+set tags+=/root/.cpp_stl_tags
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
