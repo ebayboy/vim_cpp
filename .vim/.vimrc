@@ -119,6 +119,7 @@ function AddFileInformation_CPP()
 	silent  put! =infor
 endfunction
 autocmd BufNewFile *.cpp call AddFileInformation_CPP()
+autocmd BufNewFile *.hpp call AddFileInformation_CPP()
 
 function AddFileInformation_C()
 	let infor = "/****************************************************************************\n"
