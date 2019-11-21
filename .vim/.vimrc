@@ -26,6 +26,12 @@ set autoindent
 set smartindent
 set cindent
 
+"F2 format code auto, please install astyle first."
+let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
+
+"format 
+map <F2> :call FormatCode()<CR>
+
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap " ""<ESC>i
@@ -134,4 +140,25 @@ function AddFileInformation_C()
 endfunction
 autocmd BufNewFile *.c call AddFileInformation_C()
 
+func! FormatCode()
+    exec "w"
+    if &filetype == 'c' || &filetype == 'h'
+        exec "!astyle --style=allman --suffix=none %"
+    elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp'
+        exec "!astyle --style=allman --suffix=none %"
+    elseif &filetype == 'perl'
+        exec "!astyle --style=gnu --suffix=none %"
+    elseif &filetype == 'py'|| &filetype == 'python'
+        exec "!autopep8 --in-place --aggressive %"
+    elseif &filetype == 'java'
+        exec "!astyle --style=java --suffix=none %"
+    elseif &filetype == 'jsp'
+        exec "!astyle --style=gnu --suffix=none %"
+    elseif &filetype == 'xml'
+        exec "!astyle --style=gnu --suffix=none %"
+    else
+        exec "normal gg=G"
+        return
+    endif
+endfunc
 
