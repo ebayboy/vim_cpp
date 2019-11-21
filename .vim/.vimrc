@@ -65,11 +65,7 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 
-"F2 format code auto, please install astyle first."
-let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
-let g:formatters_cpp = ['allman']
-let g:formatters_c = ['allman']
-let Tlist_Auto_Open=1 
+let Tlist_Auto_Open=1
 
 function AddFileInformation_sh()
 	let infor = "#!/bin/bash\n"

@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/root/.vim/bundle'
+let g:netrw_dirhist_2='/work/github/safenginx/3Party/nginx-upsync-module'
+let g:netrw_dirhist_3='/usr/local/safenginx/conf/servers/serverA'
+let g:netrw_dirhist_4='/opt/php-7.1.1/tidy-html5-5.1.25/README'
