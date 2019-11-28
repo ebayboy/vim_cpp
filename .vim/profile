@@ -79,9 +79,16 @@ unset -f pathmunge
 
 . /etc/bash_completion
 
-export PATH=$PATH:/usr/local/safenginx/sbin:/usr/local/mysql/bin:/usr/local/php/bin:/usr/local/libtool/bin
+export PATH=$PATH:/usr/local/safenginx/sbin:/usr/local/mysql/bin:/usr/local/php/bin:/usr/local/libtool/bin:/usr/local/bin
+
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/local/mysql
 export C_INCLUDE_PATH=$CPLUS_INCLUDE_PATH
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/mysql/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$/usr/local/mysql/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib:/usr/local/openssl/lib
+
+alias gitcp='git commit -a -m "fw"; git push'
+alias scps='scps() { scp $1 root@122.51.85.145:/opt/ ; };scps'
+
+VIRTUALENVWRAPPER_PYTHON=/usr/local/python3/bin/python3    # 指定virtualenvwrapper执行的python版本
+export WORKON_HOME=$HOME/.virtualenvs    # 指定虚拟环境存放目录，.virtualenvs目录名可自拟
 

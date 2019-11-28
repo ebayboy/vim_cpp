@@ -14,9 +14,17 @@ call vundle#end()
 
 execute pathogen#infect()
 filetype plugin indent on
+
+syntax enable
 syntax on
 
+autocmd FileType sh,ksh,csh colorscheme solarized
+autocmd FileType java,python colorscheme onedark
+
 set nu
+set ruler
+set wildmenu 
+set showcmd 
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -61,11 +69,11 @@ imap <F9> <ESC>:cn<CR>
 
 nnoremap <silent> <F11> :TlistToggle<CR>
 
-set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
-map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> "
+"C/C++ config
+autocmd FileType c,cpp,hpp set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
+autocmd FileType c,cpp,hpp set tags+=~/.vim/tags/cpp_src/tags
 
-"cpp tags file generate by https://www.vim.org/scripts/script.php?script_id=2358
-set tags+=/root/.cpp_stl_tags
+map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> "
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
