@@ -149,25 +149,15 @@ endfunction
 autocmd BufNewFile *.c call AddFileInformation_C()
 
 function AddFileInformation_py()
-	let infor = "/****************************************************************************\n"
-				\."@file:".expand("%")." \n"
-				\."@author:ebayboy@163.com \n"
-				\."@date:".strftime("%Y-%m-%d %H:%M")." \n"
-				\."@version 1.0  \n"
-				\."@description: python file \n"
-				\."@Copyright (c)  all right reserved \n"
-				\."**************************************************************************/\n\n"
-				\."#!/usr/bin/python3\n\n"
-				\."import os\n"   
-				\."import sys\n"   
-				\."import string\n"   
-				\."import time\n"   
-				\."import random\n"   
-				\."import re\n"   
-				\."import base64\n"   
-				\."import sha\n"   
-				\."import md5\n"   
-				\."import flask\n"   
+	let infor = "#!/usr/bin/python3\n\n"
+				\."#/****************************************************************************\n"
+				\."#@file:".expand("%")." \n"
+				\."#@author:ebayboy@163.com \n"
+				\."#@date:".strftime("%Y-%m-%d %H:%M")." \n"
+				\."#@version 1.0  \n"
+				\."#@description: python file \n"
+				\."#@Copyright (c)  all right reserved \n"
+				\."#**************************************************************************/\n\n"
 	silent  put! =infor
 endfunction
 autocmd BufNewFile *.py call AddFileInformation_py()
