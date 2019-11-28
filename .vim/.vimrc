@@ -19,10 +19,10 @@ filetype plugin indent on
 syntax enable
 syntax on
 
-colorscheme molokai
-autocmd FileType sh,ksh,csh colorscheme solarized
-autocmd FileType python colorscheme onedark
-autocmd FileType *.html,*.htm colorscheme delek
+"colorscheme molokai
+"autocmd FileType sh,ksh,csh colorscheme solarized
+"autocmd FileType python colorscheme onedark
+"autocmd FileType *.html,*.htm colorscheme delek
 
 set nu
 set ruler
