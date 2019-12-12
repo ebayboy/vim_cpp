@@ -19,6 +19,7 @@ filetype plugin indent on
 
 syntax enable
 syntax on
+set hlsearch 
 
 "colorscheme molokai
 "autocmd FileType sh,ksh,csh colorscheme solarized
@@ -51,24 +52,22 @@ inoremap { {<CR>}<ESC>kA<CR>
 "GIT setting 
 map <F3> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 map <F4> :call ComplieAndRun() <CR>
+map <F5> :make<CR><CR><CR> :copen<CR><CR>
 
 "-- QuickFix setting --
 "set temp makefile && make clean
 map <F6> <ESC> :w <CR> :set makeprg=g++\ -Wall\ %\ -o%<\ <CR><CR> :make clean<CR><CR>
-"make
-map <F7> :make<CR><CR><CR> :copen<CR><CR>
-"next error
-map <F8> :cp<CR>
-"prev error 
-map <F9> :cn<CR>
-imap <F6> <ESC>:make clean<CR><CR><CR>
-imap <F7> <ESC>:make<CR><CR><CR> :copen<CR><CR>
-imap <F8> <ESC>:cp<CR>
-imap <F9> <ESC>:cn<CR>
 
-map <F12> :call CreateTags()<CR>
+"next error
+map <F7> :cp<CR>
+"prev error 
+map <F8> :cn<CR>
+
+"imap <F8> <ESC>:cp<CR>
+"imap <F9> <ESC>:cn<CR>
 
 nnoremap <silent> <F11> :TlistToggle<CR>
+map <F12> :call CreateTags()<CR>
 
 "C/C++ config
 autocmd FileType c,cpp,hpp set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
@@ -208,13 +207,33 @@ let OmniCpp_ShowPrototypeInAbbr = 1 " 显示函数参数列表
 let OmniCpp_MayCompleteScope = 1    " 输入 :: 后自动补全
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 let OmniCpp_DisplayMode = 1 		"always show all members
-
 "============================
 "  Python 补全插件设置
 "============================
+
 autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete
 let g:pydiction_location='~/.vim/tools/pydiction/complete-dict'
 
+"============================
+"  cscope 插件设置
+"============================
+if has("cscope")
+	set csprg=/usr/bin/cscope "指定用来执行cscope的命令
+	set csto=0 " 设置cstag命令查找次序：0先找cscope数据库再找标签文件；1先找标签文件再找cscope数据库
+	set cst " 同时搜索cscope数据库和标签文件
+	set cscopequickfix=s-,c-,d-,i-,t-,e- " 使用QuickFix窗口来显示cscope查找结果
+	set nocsverb
+	if filereadable("cscope.out") " 若当前目录下存在cscope数据库，添加该数据库到vim
+		cs add cscope.out
+	elseif $CSCOPE_DB != "" " 否则只要环境变量CSCOPE_DB不为空，则添加其指定的数据库到vim
+		cs add $CSCOPE_DB
+	endif
+	set csverb
+endif
+"查找函数定义
+nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR><CR> :copen<CR><CR>
+"查找调用这个函数的函数
+nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR><CR> :copen<CR><CR>
 
 "============================
 "  函数定义
@@ -243,7 +262,7 @@ endfunc
 "生成tags文件
 func! CreateTags()
 	if &filetype == 'c'
-		exec "!ctags *.c *.h --c-kinds=+p --fields=+iaS --extra=+fq "
+		exec "!ctags *.c *.h --c-kinds=+p --fields=+iaS --extra=+fq; cscope -Rbq;"
 	elseif &filetype == 'cpp'
 		exec "!ctags *.cpp *.h *.hpp *.c --c++-kinds=+px --fields=+iaS --extra=+fq "
 	elseif &filetype == 'java'

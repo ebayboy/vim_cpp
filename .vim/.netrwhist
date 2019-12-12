@@ -1,8 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/root/.vim/bundle'
-let g:netrw_dirhist_2='/work/github/safenginx/3Party/nginx-upsync-module'
-let g:netrw_dirhist_3='/usr/local/safenginx/conf/servers/serverA'
-let g:netrw_dirhist_4='/opt/php-7.1.1/tidy-html5-5.1.25/README'
-let g:netrw_dirhist_5='/work/github/safenginx/conf_install/servers/www.codedayday.com'
-let g:netrw_dirhist_6='/work/github/safenginx/conf_install/conf/rtmp'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/work/github/safenginx/conf_install/conf_www.codedayday.com/http/www.codedayday.com'
+let g:netrw_dirhist_2='/work/github/safenginx/conf_install/conf_codedayday/njs'
+let g:netrw_dirhist_3='/work/github/safenginx/conf_install/conf_codedayday/rtmp'
+let g:netrw_dirhist_4='/work/github/safenginx/conf_install/conf_codedayday/http/www.codedayday.com'
+let g:netrw_dirhist_5='/root/.vim'
