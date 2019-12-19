@@ -11,6 +11,8 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/OmniCppComplete.git'
 Plugin 'tell-k/vim-autopep8'
+Plugin 'othree/csscomplete'
+Plugin 'vim-scripts/cppcomplete'
 
 call vundle#end()
 
