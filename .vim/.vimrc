@@ -11,6 +11,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/OmniCppComplete.git'
 Plugin 'tell-k/vim-autopep8'
+Plugin 'rkulla/pydiction'
 
 call vundle#end()
 
@@ -72,7 +73,6 @@ map <F12> :call CreateTags()<CR>
 "C/C++ config
 autocmd FileType c,cpp,hpp set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
 autocmd FileType c,cpp,hpp set tags+=~/.vim/tags/cpp_src/tags
-
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
@@ -186,6 +186,13 @@ func! FormatCode()
 endfunc
 
 "============================
+"  Python 补全插件设置
+"============================
+autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete
+let g:pydiction_menu_height = 3
+let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
+
+"============================
 "  补全插件设置
 "============================
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -207,15 +214,12 @@ let OmniCpp_ShowPrototypeInAbbr = 1 " 显示函数参数列表
 let OmniCpp_MayCompleteScope = 1    " 输入 :: 后自动补全
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 let OmniCpp_DisplayMode = 1 		"always show all members
-"============================
-"  Python 补全插件设置
-"============================
-
-autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete
-let g:pydiction_location='~/.vim/tools/pydiction/complete-dict'
 
 "============================
 "  cscope 插件设置
+"  :cs f c xx   调用xx的函数
+"  :cs f f xx   查找xx文件
+"  :cs f e xx   查找所有包含 文件 的位置
 "============================
 if has("cscope")
 	set csprg=/usr/bin/cscope "指定用来执行cscope的命令
