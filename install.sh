@@ -18,7 +18,7 @@ ln -s $PWD/.vim /root/
 ln -s $PWD/.vim/.vimrc /root/
 ln -s $PWD/.vim/.cpp_stl_tags /root/
 cp $PWD/.vim/astyle /usr/bin/
-chmod + x /usr/bin/astyle
+chmod +x /usr/bin/astyle
 
 #install cpp stl tags
 #tar xf cpp_src.tar.gz
