@@ -13,6 +13,8 @@ Plugin 'vim-scripts/OmniCppComplete.git'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'othree/csscomplete'
 Plugin 'vim-scripts/cppcomplete'
+Plugin 'pangloss/vim-javascript'
+Plugin 'chr4/nginx'
 
 call vundle#end()
 
@@ -74,6 +76,9 @@ map <F12> :call CreateTags()<CR>
 "C/C++ config
 autocmd FileType c,cpp,hpp set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
 autocmd FileType c,cpp,hpp set tags+=~/.vim/tags/cpp_src/tags
+
+"python tags
+autocmd FileType python set tags+=/root/.virtualenvs/flask_test/tags
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
