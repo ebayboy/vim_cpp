@@ -91,6 +91,8 @@ let Tlist_Auto_Open=1
 "set for react
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 
 
 function AddFileInformation_sh()
@@ -177,25 +179,25 @@ autocmd BufNewFile *.py call AddFileInformation_py()
 
 
 func! FormatCode()
-    exec "w"
-    if &filetype == 'c' || &filetype == 'h'
-        exec "!astyle --style=allman --suffix=none %"
-    elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp'
-        exec "!astyle --style=allman --suffix=none %"
-    elseif &filetype == 'perl'
-        exec "!astyle --style=gnu --suffix=none %"
-    elseif &filetype == 'py'|| &filetype == 'python'
-        exec "!autopep8 --in-place --aggressive %"
-    elseif &filetype == 'java'
-        exec "!astyle --style=java --suffix=none %"
-    elseif &filetype == 'jsp'
-        exec "!astyle --style=gnu --suffix=none %"
-    elseif &filetype == 'xml'
-        exec "!astyle --style=gnu --suffix=none %"
-    else
-        exec "normal gg=G"
-        return
-    endif
+	exec "w"
+	if &filetype == 'c' || &filetype == 'h'
+		exec "!astyle --style=allman --suffix=none %"
+	elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp'
+		exec "!astyle --style=allman --suffix=none %"
+	elseif &filetype == 'perl'
+		exec "!astyle --style=gnu --suffix=none %"
+	elseif &filetype == 'py'|| &filetype == 'python'
+		exec "!autopep8 --in-place --aggressive %"
+	elseif &filetype == 'java'
+		exec "!astyle --style=java --suffix=none %"
+	elseif &filetype == 'jsp'
+		exec "!astyle --style=gnu --suffix=none %"
+	elseif &filetype == 'xml'
+		exec "!astyle --style=gnu --suffix=none %"
+	else
+		exec "normal gg=G"
+		return
+	endif
 endfunc
 
 "============================
@@ -259,21 +261,21 @@ nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR><CR> :copen<CR><CR>
 func! ComplieAndRun()
 	exec "w"
 	if &filetype == 'c'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -std=c++11 -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'java' 
-        exec "!javac %" 
-        exec "!time java %<"
-    elseif &filetype == 'sh'
-        :!time bash %
-    elseif &filetype == 'python'
-        exec "!time python3 %"
-    elseif &filetype == 'html'
-        exec "!google-chrome % &"
-    endif
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		exec "!g++ % -std=c++11 -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'java' 
+		exec "!javac %" 
+		exec "!time java %<"
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		exec "!time python3 %"
+	elseif &filetype == 'html'
+		exec "!google-chrome % &"
+	endif
 endfunc
 
 "生成tags文件
