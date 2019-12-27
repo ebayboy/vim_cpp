@@ -15,6 +15,7 @@ Plugin 'othree/csscomplete'
 Plugin 'vim-scripts/cppcomplete'
 Plugin 'pangloss/vim-javascript'
 Plugin 'chr4/nginx'
+Plugin 'mxw/vim-jsx'
 
 call vundle#end()
 
@@ -85,6 +86,12 @@ set termencoding=utf-8
 set encoding=utf-8
 
 let Tlist_Auto_Open=1
+
+
+"set for react
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:syntastic_javascript_checkers = ['eslint']
+
 
 function AddFileInformation_sh()
 	let infor = "#!/bin/bash\n"
@@ -201,9 +208,9 @@ let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
 "============================
 "  补全插件设置
 "============================
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType css,scss set omnifunc=csscomplete#CompleteCSS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript,tsx,js set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType ruby set omnifunc=rubycomplete#Complete

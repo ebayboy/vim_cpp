@@ -24,5 +24,10 @@ chmod + x /usr/bin/astyle
 #tar xf cpp_src.tar.gz
 #ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ cpp_src
 
+#add for react
+yarn global add eslint
+yarn global add babel-eslint
+yarn global add eslint-plugin-react
+
 exit 0
 
