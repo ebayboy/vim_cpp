@@ -16,6 +16,7 @@ Plugin 'vim-scripts/cppcomplete'
 Plugin 'pangloss/vim-javascript'
 Plugin 'chr4/nginx'
 Plugin 'mxw/vim-jsx'
+Plugin 'moll/vim-node'
 
 call vundle#end()
 
