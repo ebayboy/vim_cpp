@@ -11,7 +11,15 @@
 #* 
 #**************************************************************************/ 
 
+
+yum install ctags -y
+
+tar xvf .vim/vendors/astyle_3.1_linux.tar.gz  -C .vim/vendors/
+
+cd .vim/vendors/astyle/build
+cmake ../ && make && make install
+cd -
+
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-exit 0
-
+exit;
