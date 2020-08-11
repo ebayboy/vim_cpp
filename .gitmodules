@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/YoucompleteMe"]
 	path = .vim/bundle/YoucompleteMe
 	url = git://github.com/Valloric/YouCompleteMe
+[submodule ".vim/bundle/YouCompleteMe"]
+	path = .vim/bundle/YouCompleteMe
+	url = git://github.com/Valloric/YouCompleteMe
