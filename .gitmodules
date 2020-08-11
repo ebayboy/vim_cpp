@@ -7,3 +7,6 @@
 [submodule ".vim/plugin"]
 	path = .vim/plugin
 	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule ".vim/bundle/YoucompleteMe"]
+	path = .vim/bundle/YoucompleteMe
+	url = git://github.com/Valloric/YouCompleteMe

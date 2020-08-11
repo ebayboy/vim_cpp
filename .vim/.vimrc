@@ -67,7 +67,7 @@ let g:clang_snippets=1
 let g:clang_close_preview=1
 let g:clang_use_library=1
 let g:clang_user_options='-stdlib=libstdc++ -std=c++11 ./'
-let g:clang_library_path="/usr/lib/llvm-8/lib"
+let g:clang_library_path="/usr/lib/llvm-10/lib"
 "F2 format code auto, please install astyle first."
 let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
 let g:formatters_cpp = ['allman']
