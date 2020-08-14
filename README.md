@@ -9,3 +9,4 @@ clang, clang-dev
 2. 代码格式化: 安装astyle, 并配置vimrc
 apt install astyle
 
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

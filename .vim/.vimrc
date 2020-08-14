@@ -11,12 +11,14 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/OmniCppComplete.git'
 Plugin 'tell-k/vim-autopep8'
-Plugin 'othree/csscomplete'
 Plugin 'vim-scripts/cppcomplete'
 Plugin 'pangloss/vim-javascript'
 Plugin 'chr4/nginx'
 Plugin 'mxw/vim-jsx'
 Plugin 'moll/vim-node'
+Plugin 'vim-scripts/luainspect.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-lua-ftplugin'
 
 call vundle#end()
 
