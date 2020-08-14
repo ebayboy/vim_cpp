@@ -1,6 +1,6 @@
 
 set nocompatible
-filetype off
+filetype on
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 
 call vundle#begin()
@@ -197,8 +197,6 @@ func! FormatCode()
 		exec "!astyle --style=gnu --suffix=none %"
 	elseif &filetype == 'xml'
 		exec "!astyle --style=gnu --suffix=none %"
-	elseif &filetype == 'lua'
-		exec "!astyle --style=gnu --suffix=none %"
 	else
 		exec "normal gg=G"
 		return
@@ -267,21 +265,21 @@ func! ComplieAndRun()
 	exec "w"
 	if &filetype == 'c'
 		exec "!g++ % -o %<"
-		exec "!time ./%<"
+		exec "!clear && time ./%<"
 	elseif &filetype == 'cpp'
 		exec "!g++ % -std=c++11 -o %<"
-		exec "!time ./%<"
+		exec "!clear && time ./%<"
 	elseif &filetype == 'java' 
 		exec "!javac %" 
-		exec "!time java %<"
+		exec "!clear && time java %<"
 	elseif &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'python'
-		exec "!time python3 %"
+		exec "!clear && time python3 %"
 	elseif &filetype == 'html'
-		exec "!google-chrome % &"
+		exec "!clear && google-chrome % &"
 	elseif &filetype == 'lua'
-		exec "!time /usr/bin/lua %"
+		exec "!clear && /usr/bin/lua %"
 	endif
 endfunc
 
