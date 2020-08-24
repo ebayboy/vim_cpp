@@ -42,7 +42,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autochdir
-set mouse=a
+set mouse=v
 set autoindent
 set smartindent
 set cindent
@@ -78,8 +78,8 @@ nnoremap <silent> <F11> :TlistToggle<CR>
 map <F12> :call CreateTags()<CR>
 
 "C/C++ config
-autocmd FileType c,cpp,hpp set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
-autocmd FileType c,cpp,hpp set tags+=~/.vim/tags/cpp_src/tags
+autocmd FileType c,cc,cpp,hpp set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
+autocmd FileType c,cc,cpp,hpp set tags+=~/.vim/tags/cpp_src/tags
 
 "python tags
 autocmd FileType python set tags+=/root/.virtualenvs/flask_test/tags
@@ -143,8 +143,8 @@ function AddFileInformation_CPP()
 				\."}"
 	silent  put! =infor
 endfunction
-autocmd BufNewFile *.cpp call AddFileInformation_CPP()
-autocmd BufNewFile *.hpp call AddFileInformation_CPP()
+autocmd BufNewFile *.{cc,cpp} call AddFileInformation_CPP()
+autocmd BufNewFile *.{h,hpp} call AddFileInformation_CPP()
 
 function AddFileInformation_C()
 	let infor = "/****************************************************************************\n"
@@ -225,6 +225,7 @@ autocmd FileType perl set omnifunc=perlcomplete#Complete
 "  C++ 补全插件设置
 "============================
 autocmd Filetype c setlocal omnifunc=cppcomplete#Complete
+autocmd Filetype cc setlocal omnifunc=cppcomplete#Complete
 autocmd Filetype cpp setlocal omnifunc=cppcomplete#Complete
 " search namespaces in the current buffer   and in included files
 let OmniCpp_NamespaceSearch = 2     
@@ -264,11 +265,10 @@ nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR><CR> :copen<CR><CR>
 func! ComplieAndRun()
 	exec "w"
 	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!clear && time ./%<"
+		exec "!g++ % -o %< &&./%<"
 	elseif &filetype == 'cpp'
 		exec "!g++ % -std=c++11 -o %<"
-		exec "!clear && time ./%<"
+		exec "time ./%<"
 	elseif &filetype == 'java' 
 		exec "!javac %" 
 		exec "!clear && time java %<"
@@ -287,8 +287,8 @@ endfunc
 func! CreateTags()
 	if &filetype == 'c'
 		exec "!ctags *.c *.h --c-kinds=+p --fields=+iaS --extra=+fq; cscope -Rbq;"
-	elseif &filetype == 'cpp'
-		exec "!ctags *.cpp *.h *.hpp *.c --c++-kinds=+px --fields=+iaS --extra=+fq "
+	elseif &filetype == 'cpp' || &filetype == 'cc'
+		exec "!ctags *.cc *.cpp *.h *.hpp *.c --c++-kinds=+px --fields=+iaS --extra=+fq "
 	elseif &filetype == 'java'
 		exec "!ctags *.java --java-kinds=+p --fields=+iaS --extra=+fq "
 	elseif &filetype == 'python'
