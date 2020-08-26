@@ -19,6 +19,7 @@ Plugin 'moll/vim-node'
 Plugin 'vim-scripts/luainspect.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'WolfgangMehner/vim-plugins'
 
 call vundle#end()
 
@@ -227,12 +228,21 @@ autocmd FileType perl set omnifunc=perlcomplete#Complete
 autocmd Filetype c setlocal omnifunc=cppcomplete#Complete
 autocmd Filetype cc setlocal omnifunc=cppcomplete#Complete
 autocmd Filetype cpp setlocal omnifunc=cppcomplete#Complete
+autocmd Filetype hpp setlocal omnifunc=cppcomplete#Complete
+autocmd Filetype h setlocal omnifunc=cppcomplete#Complete
 " search namespaces in the current buffer   and in included files
 let OmniCpp_NamespaceSearch = 2     
 let OmniCpp_ShowPrototypeInAbbr = 1 " 显示函数参数列表
-let OmniCpp_MayCompleteScope = 1    " 输入 :: 后自动补全
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 let OmniCpp_DisplayMode = 1 		"always show all members
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_MayCompleteScope = 1    " 输入 :: 后自动补全
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
 
 "============================
 "  cscope 插件设置

@@ -13,6 +13,7 @@
 
 #:PluginInstall
 
+yum install cscope -y
 
 ln -s $PWD/.vim /root/
 ln -s $PWD/.vim/.vimrc /root/
