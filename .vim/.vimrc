@@ -89,7 +89,7 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 
-let Tlist_Auto_Open=1
+"let Tlist_Auto_Open=1
 
 
 "set for react
@@ -122,15 +122,7 @@ endfunction
 autocmd BufNewFile *.sh call AddFileInformation_sh()
 
 function AddFileInformation_CPP()
-	let infor = "/****************************************************************************\n"
-				\."@file:".expand("%")." \n"
-				\."@author:ebayboy@163.com \n"
-				\."@date:".strftime("%Y-%m-%d %H:%M")." \n"
-				\."@version: 1.0  \n"
-				\."@description: cpp file \n"
-				\."@Copyright (c)  all right reserved \n"
-				\."**************************************************************************/\n\n"
-				\."#include <iostream>\n"   
+	let infor = "#include <iostream>\n"   
 				\."#include <string>\n"   
 				\."#include <numeric>\n"   
 				\."#include <vector>\n"   
@@ -275,15 +267,14 @@ nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR><CR> :copen<CR><CR>
 func! ComplieAndRun()
 	exec "w"
 	if &filetype == 'c'
-		exec "!g++ % -o %< &&./%<"
+		exec "!g++ -std=c++17 % -o %< &&./%<"
 	elseif &filetype == 'cpp'
-		exec "!g++ % -std=c++11 -o %<"
-		exec "time ./%<"
+		exec "!g++ % -std=c++17 -o %< &&./%<"
 	elseif &filetype == 'java' 
 		exec "!javac %" 
-		exec "!clear && time java %<"
+		exec "!clear && java %<"
 	elseif &filetype == 'sh'
-		:!time bash %
+		:! bash %
 	elseif &filetype == 'python'
 		exec "!clear && time python3 %"
 	elseif &filetype == 'html'
