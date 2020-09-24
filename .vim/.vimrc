@@ -176,13 +176,13 @@ autocmd BufNewFile *.py call AddFileInformation_py()
 
 func! FormatCode()
 	exec "w"
-	if &filetype == 'c' || filetype == 'h'
+	if &filetype == 'c' || &filetype == 'h'
 		exec "!astyle --style=allman --suffix=none %"
-	elseif &filetype == 'cpp' || filetype == 'cc' || filetype == 'hpp'
+	elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp'
 		exec "!astyle --style=allman --suffix=none %"
 	elseif &filetype == 'perl'
 		exec "!astyle --style=gnu --suffix=none %"
-	elseif &filetype == 'py'|| filetype == 'python'
+	elseif &filetype == 'py'|| &filetype == 'python'
 		exec "!autopep8 --in-place --aggressive %"
 	elseif &filetype == 'java'
 		exec "!astyle --style=java --suffix=none %"
@@ -267,9 +267,9 @@ nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR><CR> :copen<CR><CR>
 func! ComplieAndRun()
 	exec "w"
 	if &filetype == 'c'
-		exec "!g++ -std=c++17 % -o %< &&./%<"
+		exec "!gcc -g % -o %< &&./%<"
 	elseif &filetype == 'cpp'
-		exec "!g++ % -std=c++17 -o %< &&./%<"
+		exec "!g++ -g -O0 -lz -lrt -lz -lc -std=c++17 -o %< % &&./%<"
 	elseif &filetype == 'java' 
 		exec "!javac %" 
 		exec "!clear && java %<"
