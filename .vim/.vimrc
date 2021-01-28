@@ -8,6 +8,8 @@ call vundle#begin()
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'tpope/vim-sensible'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'tpope/vim-pathogen'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
