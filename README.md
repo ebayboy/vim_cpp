@@ -1,5 +1,7 @@
 # vim_cpp
 
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim:w
+
 安装一些插件和工具
 sudo aptitude install astyle clang-format clang clang-dev dos2unix
 
