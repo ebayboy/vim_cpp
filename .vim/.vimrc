@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'tpope/vim-sensible'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -20,16 +21,21 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autochdir
-set mouse=a
+set mouse=v
 set autoindent
 set smartindent
 set cindent
 
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
-inoremap { {<CR>}<ESC>kA<CR>
+"vmap "+y :w !pbcopy<CR><CR> 
+"nmap "+p :r !pbpaste<CR><CR>
+"vmap <C-x> :!pbcopy<CR>   
+"vmap <C-c> :w !pbcopy<CR><CR>
+
+"inoremap ( ()<ESC>i
+"inoremap [ []<ESC>i
+"inoremap " ""<ESC>i
+"inoremap ' ''<ESC>i
+"inoremap { {<CR>}<ESC>kA<CR>
 
 "format 
 map <F2> :call FormatCode()<CR>

@@ -1,4 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/root/.vim/bundle'
 let g:netrw_dirhist_2='/github/vim_cpp/.vim/vendors/astyle/build'
+let g:netrw_dirhist_3='/root/git.jd.com/vpc-waf-engine/vendors/vpcwaf-sdk/match'
+let g:netrw_dirhist_4='/root/git.jd.com/vpc-waf-engine_1180/vendors/vpcwaf-sdk/waf_match'
+let g:netrw_dirhist_5='/etc/nginx'
+let g:netrw_dirhist_6='/etc/nginx/waf.d'
+let g:netrw_dirhist_7='/root/coding.jd.com/vpc-waf-engine/test/waf_rule_replay'
