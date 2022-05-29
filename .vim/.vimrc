@@ -16,6 +16,8 @@ execute pathogen#infect()
 filetype plugin indent on
 syntax on
 
+let g:go_version_warning = 0
+
 set nu
 set tabstop=4
 set shiftwidth=4
