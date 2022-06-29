@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # ***************************************************************************
 # * 
@@ -15,7 +15,7 @@
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-apt install astyle clang-format clang libclang-dev dos2unix cmake
+apt install astyle clang-format clang libclang-dev dos2unix cmake bash-completion
 
 # 1. vim exec :PluginInstall
 
@@ -24,6 +24,6 @@ cd ~/.vim/bundle/YouCompleteMe
 git submodule update --init --recursive
 sudo ./install.py --clang-completer --system-libclang
 
-[安装YouCompleteMe](https://blog.csdn.net/liao20081228/article/details/80347889)
+#[安装YouCompleteMe](https://blog.csdn.net/liao20081228/article/details/80347889)
 
 exit;
