@@ -9,5 +9,5 @@ if [ -z "$1" ] || [ -z "$2" ]; then
 	exit 1
 fi
 
-/usr/bin/git submodule add $URL $PATH
+git submodule add $URL $PATH
 
