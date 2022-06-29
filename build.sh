@@ -21,8 +21,12 @@ apt install astyle clang-format clang libclang-dev dos2unix cmake bash-completio
 
 # 2. ycm代码补全
 cd ~/.vim/bundle/YouCompleteMe
+
 git submodule update --init --recursive
+
 sudo ./install.py --clang-completer --system-libclang
+
+cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py
 
 #[安装YouCompleteMe](https://blog.csdn.net/liao20081228/article/details/80347889)
 
