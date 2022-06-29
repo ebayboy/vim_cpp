@@ -59,13 +59,13 @@ map <F2> :call FormatCode()<CR>
 "git push
 map <F3> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 "g++ && run
-map <F4> <ESC> :w <CR> :!g++ -std=c++11 -Wall -g % -o %< && ./%< <CR>
+map <F4> <ESC> :w <CR> :!g++ -std=c++11 -Werror -g % -o %< && ./%< <CR>
 "run
 map <F5> <ESC> :w <CR> :!./%< <CR>
 
 "-- QuickFix setting --
 "set temp makefile && make clean
-map <F6> <ESC> :w <CR> :set makeprg=g++\ -Wall\ %\ -o%<\ <CR><CR> :make clean<CR><CR>
+map <F6> <ESC> :w <CR> :set makeprg=g++\ -Wall\ %\ -o%<\ <CR><CR> :make<CR>> <CR> :!./%< <CR>
 "make
 map <F7> :make<CR><CR><CR> :copen<CR><CR>
 "next error
