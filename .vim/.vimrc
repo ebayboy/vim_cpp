@@ -9,7 +9,10 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'tpope/vim-sensible'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'tpope/vim-pathogen'
-Plugin 'fatih/vim-go'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'ervandew/supertab'
 
 call vundle#end()
 
@@ -40,7 +43,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autochdir
-set mouse=a
+set mouse=v
 set autoindent
 set smartindent
 set cindent
@@ -81,6 +84,17 @@ map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> "
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
+
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger(using with supertab)
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:clang_complete_copen=1
 let g:clang_snippets=1

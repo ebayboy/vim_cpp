@@ -11,15 +11,19 @@
 #* 
 #**************************************************************************/ 
 
-
-yum install ctags -y
-
-tar xvf .vim/vendors/astyle_3.1_linux.tar.gz  -C .vim/vendors/
-
-cd .vim/vendors/astyle/build
-cmake ../ && make && make install
-cd -
+#ln -s  .vim .vimrc to root
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+apt install astyle clang-format clang libclang-dev dos2unix cmake
+
+# 1. vim exec :PluginInstall
+
+# 2. ycm代码补全
+cd ~/.vim/bundle/YouCompleteMe
+git submodule update --init --recursive
+sudo ./install.py --clang-completer --system-libclang
+
+[安装YouCompleteMe](https://blog.csdn.net/liao20081228/article/details/80347889)
 
 exit;
