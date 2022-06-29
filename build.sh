@@ -15,7 +15,7 @@
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-apt install astyle clang-format clang libclang-dev dos2unix cmake bash-completion
+apt install astyle clang-format clang libclang-dev dos2unix cmake bash-completion build-essential
 
 # 1. vim exec :PluginInstall
 
