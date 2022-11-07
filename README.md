@@ -12,3 +12,9 @@ clang, clang-dev
 apt install astyle
 
 3. vim exec :PluginInstall
+
+
+4. 安装开发工具包：yum install make automake gcc gcc-c++ kernel-devel
+
+
+5. 安装大而全的包：yum groupinstall "Development Tools" "Development Libraries"
