@@ -1,3 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/root/coding.jd.com/vpc-waf-engine/test/benchmark'
+let g:netrw_dirhist_2='/root/coding.jd.com/vpc-waf-engine/srcs/ngx_http_waf_module'
+let g:netrw_dirhist_3='/root/qcj.txt'
+let g:netrw_dirhist_4='/mnt/sdb/coding.jd.com/vpc-waf-engine/vendors/vpcwaf-sdk/waf_match'
+let g:netrw_dirhist_5='/mnt/sdb/coding.jd.com/vpc-waf-engine/vendors/jstack-lb-nginx'
+let g:netrw_dirhist_6='/etc/nginx'
+let g:netrw_dirhist_7='/mnt/sdb/coding.jd.com/vpc-waf-engine/vpcwaf-test/replay'
+let g:netrw_dirhist_8='/mnt/sdb/coding.jd.com/vpc-waf-engine/vendors/vpcwaf-sdk/waf_rule_pfm_check'
+let g:netrw_dirhist_9='/root/test2'
