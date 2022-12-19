@@ -63,8 +63,8 @@ autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
-autocmd FileType c ClangFormatAutoEnable
-autocmd FileType cpp ClangFormatAutoEnable
+"autocmd FileType c ClangFormatAutoEnable
+"autocmd FileType cpp ClangFormatAutoEnable
 
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
