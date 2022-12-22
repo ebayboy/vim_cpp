@@ -13,25 +13,25 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'ervandew/supertab'
-Plugin 'rhysd/vim-clang-format'
+Plugin 'vim-autoformat/vim-autoformat'
 
 call vundle#end()
 
 execute pathogen#infect()
 
-filetype plugin indent on
-syntax on
-
-set nu
-
-"set shiftwidth=4
-"set tabstop=4
-"set softtabstop=4
-set autochdir
+filetype plugin indent off
 set cindent
-set mouse=v
 set autoindent
 set smartindent
+
+syntax on
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+
+set autochdir
+set mouse=v
+set nu
 
 ""inoremap ( ()<ESC>i
 ""inoremap [ []<ESC>i
@@ -79,54 +79,39 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" F2 format with clang-format
-let g:clang_format#command = 'clang-format'
-nmap <F2> :ClangFormat<CR>
-""au BufWrite * :ClangFormat
-autocmd FileType c ClangFormatAutoEnable
-let g:clang_format#detect_style_file = 1
-let g:clang_complete_copen=1
-let g:clang_snippets=1
-let g:clang_close_preview=1
-let g:clang_use_library=1
-let g:clang_user_options='-stdlib=libstdc++ -std=c++20 ./'
-""let g:clang_library_path="/usr/lib/llvm-10/lib"
+nmap <F2> :Autoformat<CR>
+let g:formatdef_my_custom_cs = '"astyle --mode=cs --style=ansi -pcHs4"'
+let g:formatters_cs = ['my_custom_cs']
+let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
+let g:formatters_cpp = ['allman']
+let g:formatters_c = ['allman']
+
+au BufWrite *.c :Autoformat
+au BufWrite *.cpp :Autoformat
 
 function AddFileInformation_CPP()
-	let infor = "/****************************************************************************\n"
-				\."#include <iostream>\n"   
-				\."#include <string>\n"   
-				\."#include <numeric>\n"   
-				\."#include <vector>\n"   
-				\."#include <algorithm>\n"   
-				\."\nusing namespace std;\n"
-				\."\n#define DEBUG \n"
-				\."\nint main(int argc, char **argv)\n"
-				\."{\n\n"
-				\."	cout<<\"hello world!\"<<endl;\n\n"
-				\."	return 0;\n"
-				\."}"
-	silent  put! =infor
+    let infor = "/****************************************************************************\n"
+                \."@file:".expand("%")." \n"
+                \."@author:ebayboy@163.com \n"
+                \."@date:".strftime("%Y-%m-%d %H:%M")." \n"
+                \."@version: 1.0  \n"
+                \."@description: cpp file \n"
+                \."@Copyright (c)  all right reserved \n"
+                \."**************************************************************************/\n\n"
+                \."#include <iostream>\n"
+                \."#include <string>\n"
+                \."#include <numeric>\n"
+                \."#include <vector>\n"
+                \."#include <algorithm>\n"
+                \."\nusing namespace std;\n"
+                \."\n#define DEBUG \n"
+                \."\nint main(int argc, char **argv)\n"
+                \."{\n\n"
+                \." cout<<\"hello world!\"<<endl;\n\n"
+                \." return 0;\n"
+                \."}"
+    silent  put! =infor
 endfunction
 autocmd BufNewFile *.cpp call AddFileInformation_CPP()
-
-function AddFileInformation_C()
-	let infor = "/****************************************************************************\n"
-				\."@file:".expand("%")." \n"
-				\."@author:ebayboy@163.com \n"
-				\."@date:".strftime("%Y-%m-%d %H:%M")." \n"
-				\."@version 1.0  \n"
-				\."@description: cpp file \n"
-				\."@Copyright (c)  all right reserved \n"
-				\."**************************************************************************/\n\n"
-				\."#include <stdio.h>\n\n"   
-				\."#include <unistd.h>\n\n"   
-				\."int main(int argc, char **argv)\n"
-				\."{\n\n"
-				\."	printf(\"hello world!\\n\");\n\n"
-				\."	return 0;\n"
-				\."}"
-	silent  put! =infor
-endfunction
-autocmd BufNewFile *.c call AddFileInformation_C()
+autocmd BufNewFile *.cc call AddFileInformation_CPP()
 
