@@ -8,6 +8,12 @@ call vundle#begin()
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'tpope/vim-sensible'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'tpope/vim-pathogen'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'ervandew/supertab'
+Plugin 'rhysd/vim-clang-format'
 
 call vundle#end()
 
@@ -32,11 +38,11 @@ set cindent
 "vmap <C-x> :!pbcopy<CR>   
 "vmap <C-c> :w !pbcopy<CR><CR>
 
-"inoremap ( ()<ESC>i
-"inoremap [ []<ESC>i
-"inoremap " ""<ESC>i
-"inoremap ' ''<ESC>i
-"inoremap { {<CR>}<ESC>kA<CR>
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap " ""<ESC>i
+inoremap ' ''<ESC>i
+inoremap { {<CR>}<ESC>kA<CR>
 
 "format 
 map <F2> :call FormatCode()<CR>
