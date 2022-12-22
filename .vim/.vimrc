@@ -49,7 +49,7 @@ map <F2> :call FormatCode()<CR>
 "git push
 map <F3> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 "g++ && run
-map <F4> <ESC> :w <CR> :!g++ -std=c++11 -Wall -g % -o %< && ./%< <CR>
+map <F4> <ESC> :w <CR> :!g++ -std=c++20 -Wall -g % -o %< && ./%< <CR>
 "run
 map <F5> <ESC> :w <CR> :!./%< <CR>
 
@@ -79,8 +79,31 @@ let g:clang_complete_copen=1
 let g:clang_snippets=1
 let g:clang_close_preview=1
 let g:clang_use_library=1
-let g:clang_user_options='-stdlib=libstdc++ -std=c++11 ./'
+let g:clang_user_options='-stdlib=libstdc++ -std=c++20 ./'
 let g:clang_library_path="/usr/lib/llvm-8/lib"
+"F2 format code auto, please install astyle first."
+let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
+let g:formatters_cpp = ['allman']
+let g:formatters_c = ['allman']
+
+
+" format expand
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger(using with supertab)
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+let g:clang_complete_copen=1
+let g:clang_snippets=1
+let g:clang_close_preview=1
+let g:clang_use_library=1
+let g:clang_user_options='-stdlib=libstdc++ -std=c++20 ./'
+let g:clang_library_path="/usr/lib/llvm-10/lib"
 "F2 format code auto, please install astyle first."
 let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
 let g:formatters_cpp = ['allman']
