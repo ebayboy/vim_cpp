@@ -77,7 +77,7 @@ map <F2> :call FormatCode()<CR>
 "git push
 map <F3> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 "g++ && run
-map <F4> <ESC> :w <CR> :!g++ -std=c++20 -pthread -Werror -g % -o %< && ./%< <CR>
+map <F4> <ESC> :w <CR> :!g++ -g -Wall -std=c++20 -pthread -o %< % -lfmt && ./%< <CR>
 "run
 map <F5> <ESC> :w <CR> :!./%< <CR>
 

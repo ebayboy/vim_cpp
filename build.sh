@@ -12,10 +12,13 @@
 #**************************************************************************/ 
 
 #ln -s  .vim .vimrc to root
+ln -s $(pwd)/.vim/ $HOME/
+
+ln -s $(pwd)/.vim/.vimrc $HOME/
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-apt install astyle clang-format clang libclang-dev dos2unix cmake bash-completion build-essential
+apt install astyle clang-format clang libclang-dev dos2unix cmake bash-completion build-essential -y
 
 # 1. vim exec :PluginInstall
 
