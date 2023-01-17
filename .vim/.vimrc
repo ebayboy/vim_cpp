@@ -66,18 +66,18 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 "autocmd FileType c ClangFormatAutoEnable
 "autocmd FileType cpp ClangFormatAutoEnable
 
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
-inoremap { {<CR>}<ESC>kA<CR>
+"inoremap ( ()<ESC>i
+"inoremap [ []<ESC>i
+""inoremap " ""<ESC>i
+"inoremap ' ''<ESC>i
+"inoremap { {<CR>}<ESC>kA<CR>
 
 "format 
 map <F2> :call FormatCode()<CR>
 "git push
 map <F3> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 "g++ && run
-map <F4> <ESC> :w <CR> :!g++ -std=c++11 -Werror -g % -o %< && ./%< <CR>
+map <F4> <ESC> :w <CR> :!g++ -std=c++20 -pthread -Werror -g % -o %< && ./%< <CR>
 "run
 map <F5> <ESC> :w <CR> :!./%< <CR>
 
@@ -157,15 +157,9 @@ function AddFileInformation_CPP()
 				\."@Copyright (c)  all right reserved \n"
 				\."**************************************************************************/\n\n"
 				\."#include <iostream>\n"   
-				\."#include <string>\n"   
-				\."#include <numeric>\n"   
-				\."#include <vector>\n"   
-				\."#include <algorithm>\n"   
 				\."\nusing namespace std;\n"
-				\."\n#define DEBUG \n"
 				\."\nint main(int argc, char **argv)\n"
 				\."{\n\n"
-				\."	cout<<\"hello world!\"<<endl;\n\n"
 				\."	return 0;\n"
 				\."}"
 	silent  put! =infor
