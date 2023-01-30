@@ -77,9 +77,9 @@ map <F2> :call FormatCode()<CR>
 "git push
 map <F3> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 "g++ && run
-map <F4> <ESC> :w <CR> :!g++ -g -Wall -std=c++20 -pthread -o %< % -lfmt && ./%< <CR>
-"run
-map <F5> <ESC> :w <CR> :!./%< <CR>
+map <F4> <ESC> :w <CR> :!g++ -g -Wall -Werror -std=c++20 -pthread -o %< % -lfmt && ./%< <CR>
+"cppcheck
+map <F5> <ESC> :w <CR> :!cppcheck % <CR>
 
 "-- QuickFix setting --
 "set temp makefile && make clean
@@ -139,6 +139,7 @@ autocmd BufNewFile *.sh call AddFileInformation_sh()
 
 function AddFileInformation_CPP()
 	let infor = "\n#include <iostream>\n"   
+				\."#include <utility>\n"
 				\."#include <fmt/core.h>\n"
 				\."\nusing namespace std;\n"
 				\."\nint main(int argc, char **argv)\n"
