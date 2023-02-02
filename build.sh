@@ -18,7 +18,7 @@ ln -s $(pwd)/.vim/.vimrc $HOME/
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-apt install astyle clang-format clang libclang-dev dos2unix cmake bash-completion build-essential exuberant-ctags -y
+apt install astyle clang-format clang libclang-dev dos2unix cmake bash-completion build-essential exuberant-ctags python3-dev -y
 
 # 1. vim exec :PluginInstall
 
