@@ -1,4 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/etc/fish/completions'
+let g:netrw_dirhist_8='/c20/github.com/cpp20_study/sanitizer_test/src'
+let g:netrw_dirhist_7='/var/log/modsec/modsec_audit'
+let g:netrw_dirhist_6='/c20/coding.jd.com'
+let g:netrw_dirhist_5='/c20/coding.jd.com/waf-test'
+let g:netrw_dirhist_4='/c20/github.com/nginx-bundle/.git/modules'
+let g:netrw_dirhist_3='/usr/local/benchmark/lib'
 let g:netrw_dirhist_2='/usr/share/rsyslog'
 let g:netrw_dirhist_1='/usr/local/nginx2/html/upload'

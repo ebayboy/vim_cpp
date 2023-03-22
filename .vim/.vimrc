@@ -14,6 +14,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'ervandew/supertab'
 Plugin 'rhysd/vim-clang-format' 
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -45,8 +46,8 @@ set shiftwidth=4
 set softtabstop=4
 set autochdir
 set mouse=v
-set autoindent
-set smartindent
+"set autoindent
+"set smartindent
 set cindent
 
 "clang format
@@ -57,14 +58,14 @@ let g:clang_format#style_options = {
 			\ "Standard" : "C++11"}
 
 " map to <Leader>cf in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd FileType c,cpp,cppm nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,cppm vnoremap <buffer><Leader>cf :ClangFormat<CR>
 " if you install vim-operator-user
-autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+autocmd FileType c,cpp,cppm map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
-"autocmd FileType c ClangFormatAutoEnable
-"autocmd FileType cpp ClangFormatAutoEnable
+autocmd FileType c ClangFormatAutoEnable
+autocmd FileType cpp ClangFormatAutoEnable
 
 "inoremap ( ()<ESC>i
 "inoremap [ []<ESC>i
@@ -72,14 +73,15 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 "inoremap ' ''<ESC>i
 "inoremap { {<CR>}<ESC>kA<CR>
 
-"format 
-map <F2> :call FormatCode()<CR>
+" format : 注意： 不要使用vim的 = 去格式化代码， 代码会使用clang自动格式化
+" map <F2> :call FormatCode()<CR>
+map <F2> :ClangFormat<CR>
 "git push
 map <F3> <ESC> :w <CR> :!git add % && git commit -a -m 'commit %<' && git push <CR> 
 "g++ && run
-map <F4> <ESC> :w <CR> :!g++ -g -Wall -Werror -std=c++20 -pthread -o %< % -lfmt && ./%< <CR>
+map <F4> <ESC> :w <CR> :!g++ -g -std=c++20 -pthread -o %< % -lfmt && ./%< <CR>
 "cppcheck
-map <F5> <ESC> :w <CR> :!cppcheck % <CR>
+map <F5> <ESC> :w <CR> :!cppcheck % && valgrind ./%< <CR>
 
 "-- QuickFix setting --
 "set temp makefile && make clean
@@ -120,10 +122,11 @@ let g:clang_close_preview=1
 let g:clang_use_library=1
 let g:clang_user_options='-stdlib=libstdc++ -std=c++11 ./'
 let g:clang_library_path="/usr/lib/llvm-10/lib"
+
 "F2 format code auto, please install astyle first."
-let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
-let g:formatters_cpp = ['allman']
-let g:formatters_c = ['allman']
+"let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
+"let g:formatters_cpp = ['allman']
+"let g:formatters_c = ['allman']
 
 function AddFileInformation_sh()
 	let infor = "#!/bin/bash\n"
@@ -152,6 +155,7 @@ function AddFileInformation_CPP()
 endfunction
 autocmd BufNewFile *.cpp call AddFileInformation_CPP()
 autocmd BufNewFile *.cc call AddFileInformation_CPP()
+autocmd BufNewFile *.cppm call AddFileInformation_CPP()
 
 function AddFileInformation_C()
 	let infor = "/****************************************************************************\n"
@@ -159,7 +163,7 @@ function AddFileInformation_C()
 				\."@author:ebayboy@163.com \n"
 				\."@date:".strftime("%Y-%m-%d %H:%M")." \n"
 				\."@version 1.0  \n"
-				\."@description: cpp file \n"
+				\."@description: c file \n"
 				\."@Copyright (c)  all right reserved \n"
 				\."**************************************************************************/\n\n"
 				\."#include <stdio.h>\n\n"   
@@ -177,7 +181,7 @@ func! FormatCode()
     exec "w"
     if &filetype == 'c' || &filetype == 'h'
         exec "!astyle --style=allman --suffix=none %"
-    elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp'
+    elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp' || &filetype == 'cppm'
         exec "!astyle --style=allman --suffix=none %"
     elseif &filetype == 'perl'
         exec "!astyle --style=gnu --suffix=none %"
