@@ -1,7 +1,7 @@
 # vim_cpp
 
 # 安装一些插件和工具
-apt install astyle clang-format clang libclang-dev dos2unix cmake
+clang-format clang libclang-dev dos2unix
 
 2. ycm代码补全
 cd ~/.vim/bundle/YouCompleteMe
